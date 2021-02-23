@@ -23,7 +23,7 @@
     <parent>
         <groupId>org.alfresco.client</groupId>
         <artifactId>alfresco-client</artifactId>
-        <version>1.0.0-beta1</version>
+        <version>1.0.0-ot</version>
         <relativePath>../../</relativePath>
     </parent>
     <artifactId>alfresco-java-client</artifactId>
