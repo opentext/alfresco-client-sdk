@@ -9,7 +9,7 @@ import com.google.gson.annotations.SerializedName;
 /**
  * SearchEntry
  */
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2017-04-26T16:18:20.726+02:00")
+@javax.annotation.processing.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2017-04-26T16:18:20.726+02:00")
 public class SearchEntry
 {
     @SerializedName("score")

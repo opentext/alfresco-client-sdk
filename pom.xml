@@ -22,7 +22,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.alfresco.client</groupId>
     <artifactId>alfresco-client</artifactId>
-    <version>1.0.0-beta1</version>
+    <version>1.0.0-ot</version>
     <packaging>pom</packaging>
 
     <name>Alfresco Client (Parent)</name>
@@ -63,18 +63,17 @@
         <url>https://bamboo.alfresco.com/bamboo/browse/ALF</url>
     </ciManagement>
 
-    <distributionManagement>
-        <repository>
-            <id>alfresco-internal</id>
-            <name>Alfresco Release Repository</name>
-            <url>https://artifacts.alfresco.com/nexus/file/repositories/releases</url>
-        </repository>
-    </distributionManagement>
+    <modules>
+        <module>client-java/client-commons</module>
+        <module>client-java/alfresco-java-client</module>
+        <module>client-samples/client-samples-cli</module>
+        <module>client-samples/client-samples-java</module>
+    </modules>
 
     <repositories>
         <repository>
             <id>alfresco-public</id>
-            <url>https://artifacts.alfresco.com/nexus/file/groups/public</url>
+            <url>https://artifacts.alfresco.com/nexus/content/groups/public</url>
             <releases>
                 <enabled>true</enabled>
             </releases>
@@ -84,7 +83,7 @@
         </repository>
         <repository>
             <id>alfresco-public-snapshots</id>
-            <url>https://artifacts.alfresco.com/nexus/file/groups/public-snapshots</url>
+            <url>https://artifacts.alfresco.com/nexus/content/groups/public-snapshots</url>
             <releases>
                 <enabled>false</enabled>
             </releases>
@@ -94,7 +93,7 @@
         </repository>
         <repository>
             <id>sonatype-public</id>
-            <url>https://oss.sonatype.org/file/repositories/snapshots/</url>
+            <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
             <snapshots>
                 <enabled>true</enabled>
             </snapshots>
@@ -103,7 +102,7 @@
     <pluginRepositories>
         <pluginRepository>
             <id>alfresco-public</id>
-            <url>https://artifacts.alfresco.com/nexus/file/groups/public</url>
+            <url>https://artifacts.alfresco.com/nexus/content/groups/public</url>
             <snapshots>
                 <enabled>false</enabled>
             </snapshots>
@@ -114,15 +113,12 @@
         <!-- Maven build properties -->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-        <!-- Use 1.7 for retrocompatibility but can use 1.8 for testing -->
-        <maven.compiler.target>1.7</maven.compiler.target>
-        <maven.compiler.source>1.7</maven.compiler.source>
-        <maven.compiler.testTarget>1.8</maven.compiler.testTarget>
-        <maven.compiler.testSource>1.8</maven.compiler.testSource>
+        <maven.compiler.target>11</maven.compiler.target>
+        <maven.compiler.source>11</maven.compiler.source>
 
         <!-- Libraries versions -->
-        <retrofit.version>2.1.0</retrofit.version>
-        <okhttp.version>3.4.1</okhttp.version>
+        <retrofit.version>2.7.2</retrofit.version>
+        <okhttp.version>4.4.1</okhttp.version>
     </properties>
 
     <build>
@@ -178,7 +174,7 @@
                     <configuration>
                         <autoVersionSubmodules>true</autoVersionSubmodules>
                         <stagingRepository>
-                            alfresco-internal::default::https://artifacts.alfresco.com/nexus/file/repositories/internal-staging/
+                            alfresco-internal::default::https://artifacts.alfresco.com/nexus/content/repositories/internal-staging/
                         </stagingRepository>
                     </configuration>
                 </plugin>
@@ -355,22 +351,6 @@
             </plugin>
         </plugins>
     </reporting>
-
-
-    <profiles>
-        <profile>
-            <id>alfresco-client-java</id>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
-            <modules>
-                <module>client-java/client-commons</module>
-                <module>client-java/alfresco-java-client</module>
-                <module>client-samples/client-samples-cli</module>
-                <module>client-samples/client-samples-java</module>
-            </modules>
-        </profile>
-    </profiles>
 
     <dependencyManagement>
         <dependencies>
